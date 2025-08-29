@@ -302,11 +302,6 @@ if __name__ == "__main__":
 
 ¡Contribuciones son bienvenidas! Abre un **issue** o un **pull request** con una descripción clara.
 
----
-
-## 📄 Licencia
-
-Sugerida: **MIT License**. Añade un archivo `LICENSE` en la raíz del repo.
 
 ---
 
