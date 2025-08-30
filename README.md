@@ -1,310 +1,73 @@
-# 🌊 Sea‑Level Predictor
+Sea-Level Predictor
+Descripción
 
-> Predice niveles del mar futuros a partir de datos históricos con regresión lineal. Proyecto enfocado en **limpieza de datos**, **visualización** y **modelado predictivo** usando **Python**, **pandas** y **matplotlib**.
+El Sea-Level Predictor es una herramienta que utiliza regresión lineal para predecir los cambios en el nivel del mar a lo largo del tiempo. Este modelo se entrena utilizando un conjunto de datos históricos que contienen los niveles del mar a lo largo de los años, y luego hace predicciones sobre el nivel del mar en los próximos años. Este proyecto está implementado en Python utilizando Pandas para el procesamiento de los datos y Matplotlib para la visualización de los resultados.
 
----
+Características
 
-![Sea Level Plot](./sea_level_plot.png)
+Regresión Lineal: Utiliza un modelo de regresión lineal para predecir el nivel del mar en el futuro basado en los datos históricos.
 
-<p align="center">
-  <em>Salida esperada: datos históricos (puntos), tendencia global (línea roja) y tendencia desde 2000 (línea verde).</em>
-</p>
+Predicciones a largo plazo: El modelo genera predicciones de los niveles futuros del mar basándose en el patrón histórico observado.
 
----
+Visualización de Resultados: Los resultados del modelo se visualizan en un gráfico, lo que permite a los usuarios ver tanto los datos históricos como las predicciones futuras en una sola vista.
 
-## 📌 Resumen del Proyecto
+Análisis de tendencias: El proyecto muestra las tendencias a largo plazo en el aumento del nivel del mar y permite observar cómo estos cambios podrían continuar en el futuro.
 
-Este repositorio analiza el aumento del nivel del mar utilizando el dataset de la **U.S. Environmental Protection Agency (EPA)**. Se ajustan **dos modelos de regresión lineal**:
+Tecnologías utilizadas
 
-1. **Regresión global** con todos los datos (1880–2013).
-2. **Regresión reciente** usando solo datos desde 2000.
+Python: Para la implementación del modelo de regresión y el procesamiento de los datos.
 
-Con ambos modelos se **visualizan tendencias** y se **predicen niveles del mar hasta 2050**.
+Pandas: Para la manipulación y análisis de los datos.
 
----
+Matplotlib: Para la visualización de los resultados y gráficos generados por el modelo.
 
-## 🧰 Stack Tecnológico
+NumPy: Para el manejo de arrays y cálculos numéricos.
 
-| Herramienta            | Uso                      |
-| ---------------------- | ------------------------ |
-| Python 3.x             | Lenguaje principal       |
-| pandas                 | Manipulación de datos    |
-| matplotlib             | Gráficas y visualización |
-| scipy.stats.linregress | Regresión lineal         |
+Cómo usar el proyecto
 
----
+Clonar el repositorio
+Si deseas clonar este proyecto, usa el siguiente comando:
 
-## 📁 Estructura de Archivos
+git clone <repositorio_url>  
 
-```
-Sea-Level-Predictor/
-├── sea_level_predictor.py      # Script principal (CLI con argparse)
-├── epa-sea-level.csv           # Dataset EPA
-├── sea_level_plot.png          # Gráfico de salida (autogenerado)
-├── requirements.txt            # Dependencias exactas
-├── .gitignore                  # Python, venv, cache, plots
-└── README.md                   # Documentación del proyecto
-```
 
-> Sugerencia: incluye `requirements.txt` y `.gitignore` (ver secciones más abajo) para mejor reproducibilidad.
+Instalar las dependencias
+Instala las bibliotecas necesarias ejecutando:
 
----
+pip install -r requirements.txt  
 
-## 🚀 Cómo Ejecutar
 
-### 1) Clonar el repositorio
+Ejecutar el modelo
 
-```bash
-git clone https://github.com/your-username/Sea-Level-Predictor.git
-cd Sea-Level-Predictor
-```
+Para entrenar el modelo y hacer las predicciones, ejecuta el archivo sea_level_predictor.py.
 
-### 2) (Opcional pero recomendado) Crear entorno virtual
+El archivo procesará los datos históricos y generará las predicciones sobre los niveles futuros del mar.
 
-```bash
-python -m venv .venv
-# Windows
-.venv\Scripts\activate
-# macOS/Linux
-source .venv/bin/activate
-```
+Visualizar resultados
+El archivo visualize_results.py genera un gráfico para visualizar tanto los datos históricos como las predicciones del nivel del mar.
 
-### 3) Instalar dependencias
+Instalación
 
-```bash
-pip install -r requirements.txt
-# o, si prefieres
-pip install pandas matplotlib scipy
-```
+Clona el repositorio y navega a la carpeta del proyecto.
 
-### 4) Ejecutar el script
+Ejecuta pip install -r requirements.txt para instalar las dependencias necesarias.
 
-```bash
-python sea_level_predictor.py --input epa-sea-level.csv --output sea_level_plot.png --predict_to 2050
-```
+Asegúrate de tener un entorno de Python 3.x para que las bibliotecas funcionen correctamente.
 
-### 5) Ver el resultado
+Contribuciones
 
-El gráfico se guardará como **`sea_level_plot.png`** mostrando los datos históricos y las predicciones.
+Si deseas contribuir al proyecto, sigue estos pasos:
 
----
+Haz un fork del repositorio.
 
-## 🧪 Uso del Script (CLI)
+Crea una rama para tu nueva funcionalidad o corrección de errores (git checkout -b nueva-funcionalidad).
 
-El script expone una interfaz de línea de comandos simple:
+Haz tus cambios y realiza un commit (git commit -am 'Añadir nueva funcionalidad').
 
-```bash
-python sea_level_predictor.py \
-  --input epa-sea-level.csv \
-  --output sea_level_plot.png \
-  --predict_to 2050 \
-  --dpi 140 \
-  --style default
-```
+Push a tu rama (git push origin nueva-funcionalidad).
 
-**Parámetros**
+Abre una pull request detallando los cambios realizados.
 
-* `--input` (str): ruta al CSV de la EPA.
-* `--output` (str): nombre del archivo de imagen a guardar.
-* `--predict_to` (int): último año para proyectar (p. ej., 2050).
-* `--dpi` (int, opcional): resolución del gráfico.
-* `--style` (str, opcional): estilo de matplotlib (p. ej., `default`, `ggplot`, `seaborn-v0_8`).
+Licencia
 
----
-
-## ✅ Características Clave
-
-* Código limpio, reproducible y modular.
-* Dos modelos de regresión (global y desde 2000) para comparar tendencias.
-* Predicciones hasta un año objetivo configurable.
-* Visualizaciones claras y exportables a PNG.
-
----
-
-## 📊 Metodología
-
-1. **Carga y validación** del CSV (columnas esperadas: `Year`, `CSIRO Adjusted Sea Level`).
-2. **Ajuste** de regresión lineal con `linregress` para:
-
-   * 1880–2013 (todos los datos)
-   * 2000–2013 (subconjunto reciente)
-3. **Proyección** de ambas rectas hasta el año `--predict_to`.
-4. **Visualización** de puntos históricos y líneas de tendencia.
-
-> Nota: puedes extender a otros modelos (p. ej., regresión polinómica o ARIMA) si detectas no‑linealidades.
-
----
-
-## 📦 requirements.txt (recomendado)
-
-Incluye un archivo `requirements.txt` similar a:
-
-```txt
-pandas>=2.0,<3
-matplotlib>=3.7,<4
-scipy>=1.10,<2
-```
-
----
-
-## 🙈 .gitignore sugerido
-
-```gitignore
-# Python
-__pycache__/
-*.py[cod]
-*.pyo
-*.pyd
-*.egg-info/
-.venv/
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Plots & outputs
-*.png
-!sea_level_plot.png
-```
-
----
-
-## 👩‍💻 Código Base Sugerido (extracto)
-
-> El repositorio original usa un script único. Aquí un extracto con buenas prácticas (argparse, funciones puras y tipado):
-
-```python
-# sea_level_predictor.py
-from __future__ import annotations
-import argparse
-from dataclasses import dataclass
-from pathlib import Path
-from typing import Tuple
-
-import pandas as pd
-import matplotlib.pyplot as plt
-from scipy.stats import linregress
-
-
-@dataclass
-class RegressionResult:
-    slope: float
-    intercept: float
-
-
-def load_data(csv_path: Path) -> pd.DataFrame:
-    df = pd.read_csv(csv_path)
-    # Normaliza nombres esperados del dataset de la EPA
-    assert {"Year", "CSIRO Adjusted Sea Level"}.issubset(df.columns), (
-        "El CSV debe contener 'Year' y 'CSIRO Adjusted Sea Level'."
-    )
-    df = df.rename(columns={"CSIRO Adjusted Sea Level": "sea_level"})
-    df = df[["Year", "sea_level"]].dropna()
-    return df
-
-
-def fit_regression(x: pd.Series, y: pd.Series) -> RegressionResult:
-    r = linregress(x, y)
-    return RegressionResult(slope=r.slope, intercept=r.intercept)
-
-
-def predict(years: pd.Series, reg: RegressionResult) -> pd.Series:
-    return reg.slope * years + reg.intercept
-
-
-def plot(df: pd.DataFrame, reg_all: RegressionResult, reg_2000: RegressionResult,
-         predict_to: int, output: Path, dpi: int = 140, style: str = "default") -> None:
-    plt.style.use(style)
-
-    # Eje X extendido para proyección
-    years_all = pd.Series(range(int(df["Year"].min()), predict_to + 1))
-    years_2000 = pd.Series(range(2000, predict_to + 1))
-
-    # Predicciones
-    yhat_all = predict(years_all, reg_all)
-    yhat_2000 = predict(years_2000, reg_2000)
-
-    # Gráfico
-    fig, ax = plt.subplots(figsize=(10, 6))
-    ax.scatter(df["Year"], df["sea_level"], alpha=0.7, label="Datos históricos")
-    ax.plot(years_all, yhat_all, color="red", linewidth=2, label="Regresión 1880–2013")
-    ax.plot(years_2000, yhat_2000, color="green", linewidth=2, label="Regresión 2000–2013")
-
-    ax.set_xlabel("Año")
-    ax.set_ylabel("Nivel del mar (pulgadas)")
-    ax.set_title("Predicción del nivel del mar")
-    ax.legend()
-    ax.grid(True, linestyle=":", alpha=0.4)
-
-    fig.tight_layout()
-    fig.savefig(output, dpi=dpi)
-    plt.close(fig)
-
-
-def main() -> None:
-    p = argparse.ArgumentParser(description="Sea-Level Predictor")
-    p.add_argument("--input", type=Path, default=Path("epa-sea-level.csv"))
-    p.add_argument("--output", type=Path, default=Path("sea_level_plot.png"))
-    p.add_argument("--predict_to", type=int, default=2050)
-    p.add_argument("--dpi", type=int, default=140)
-    p.add_argument("--style", type=str, default="default")
-    args = p.parse_args()
-
-    df = load_data(args.input)
-    reg_all = fit_regression(df["Year"], df["sea_level"])  # 1880–2013
-    df_recent = df[df["Year"] >= 2000]
-    reg_2000 = fit_regression(df_recent["Year"], df_recent["sea_level"])  # 2000–2013
-
-    plot(df, reg_all, reg_2000, args.predict_to, args.output, dpi=args.dpi, style=args.style)
-
-
-if __name__ == "__main__":
-    main()
-```
-
-> Para un proyecto más grande, separa en módulos: `data.py`, `model.py`, `viz.py`, `cli.py`.
-
----
-
-## 🧠 Qué Aprenderás
-
-* Aplicar **regresión lineal** a series de tiempo simples.
-* Visualizar **tendencias** y **proyecciones**.
-* Estructurar un **proyecto de ciencia de datos** claro y extensible.
-
----
-
-## 🌍 Aplicaciones Reales
-
-* Análisis de **cambio climático**.
-* Modelado de **datos ambientales**.
-* **Analítica predictiva** para políticas públicas.
-
----
-
-## 🗃️ Fuente de Datos
-
-* EPA: *Global Mean Sea Level* (GMSL). Asegúrate de incluir atribución y enlace al dataset original si lo publicas.
-
----
-
-## 🔬 Extensiones Sugeridas
-
-* Intervalos de **confianza** para ambas rectas.
-* **Pruebas unitarias** (pytest) para funciones puras.
-* Exportar resultados a **CSV/Parquet** con las predicciones.
-* **Regresión robusta** o modelos no lineales si aparecen outliers.
-* Pipeline reproducible con **Makefile** o **nox/pytest**.
-
----
-
-## 🤝 Contribuciones
-
-¡Contribuciones son bienvenidas! Abre un **issue** o un **pull request** con una descripción clara.
-
-
----
-
-## 🙋 Contacto
-
-Creado por **Emanuel González Michea**.
+Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para obtener más detalles.
